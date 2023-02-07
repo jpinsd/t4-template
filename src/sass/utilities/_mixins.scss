@@ -1,0 +1,75 @@
+@use "sass:math";
+@use "sass:string";
+@use "sass:color";
+
+// _  _ _ _  _ _ _  _ ____
+// |\/| |  \/  | |\ | [__
+// |  | | _/\_ | | \| ___]
+//
+
+
+
+//   vals: color, xy, blur, offset
+//   xy is the number of pixels on x and y axis
+//   offset is used to stagger the effect.
+//
+//   only the color is required.
+
+@mixin outlined($color, $xy : 1, $blur : 0, $offset: $xy) {
+  text-shadow: #{$xy * -1}px  #{$xy * -1}px     #{$blur}px $color,
+               #{$xy * -1}px  #{$offset}px      #{$blur}px $color,
+               #{$xy}px       #{$offset * -1}px #{$blur}px $color,
+               #{$xy}px       #{$xy}px          #{$blur}px $color;
+}
+
+
+@mixin gradientText($gradient, $stroke: 0, $strokeColor: transparent) {
+  background: $gradient;
+  background-size: 100%;
+  -webkit-text-stroke-width: #{$stroke}px;
+  -webkit-text-stroke-color: $strokeColor;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  -webkit-font-smoothing: antialiased;
+  box-decoration-break: clone;
+}
+// ^ can also just do "color: transparent " to avoid the -webkit-prefixes stuff
+
+// scrollbars
+// vars: thumb color, gutter color, width
+@mixin scrolls($thumb, $gutter, $width: 10) {
+  &::-webkit-scrollbar {
+    width: #{$width}px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $gutter;
+    // border-radius: #{$width/2}px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb ;
+    border-radius: #{math.div($width, 2)}px;
+    border: 0 solid $thumb;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: $thumb $gutter;
+}
+
+@mixin icon-mask($image, $color, $position: left top, $size: contain) {
+  mask-image: $image;
+  mask-type: luminance;
+  mask-repeat: no-repeat;
+  mask-position: $position;
+  mask-size: $size;
+  background-color: $color;
+}
+
+
+@mixin gridSpans($className, $num) {
+  @for $i from 1 through $num {
+    #{"." + $className + "-" + $i} {
+      grid-column: span $i;
+    }
+  }
+}

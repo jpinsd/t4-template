@@ -1,0 +1,105 @@
+@use "../utilities/colors" as *;
+@use "../utilities/mixins" as m;
+@use "../utilities/variables" as *;
+@use "sass:color";
+
+@mixin light {
+  $cta-local: $blue;
+  --cta: #{$cta-local};
+  --cta-rgb: #{toRGB($cta-local)};
+  --text-color: #{$text};
+  --link-color: #{$cta-local};
+  --link-active: #{$slate};
+  --heading-color: #{$black};
+  --background: #{$background-light};
+  --hover-background: #{color.scale($background-light, $lightness: -4%)};
+  --content-background :#{$white};
+  --button-color: #{$black};
+  --button-background: var(--cta);
+  --button-hover: #{color.scale($cta-local, $lightness: 20%)};
+  --button-active: #{color.scale($cta-local, $lightness: 10%, $saturation: 20%)};
+  --button-shadow: var(--cta-rgb);
+  --nav-border: #{colorVal("gray", 20)};
+  --logo-text: var(--background);
+  --logo-bkg-top: var(--text-color);
+  --logo-bkg-bottom: var(--text-color);
+  --border-color: #{$gray-med-light};
+  --footer-background: #{$gray-med-dark};
+  --footer-text-color: #{$gray-med-light};
+
+  --color-error: #{colorVal("terracotta", 50)};
+  --color-warning: #{colorVal("pumpkin", 40)};
+  --color-correct: #{colorVal("sage", 60)};
+
+}
+
+@mixin dark {
+  $cta-local: $orange;
+  --cta: #{$cta-local};
+  --cta-rgb: #{toRGB($cta-local)};
+  --text-color: #{$text-light};
+  --link-color: #{$cta-local};
+  --link-active: #{$sst-orange-30};
+  --heading-color: #{$white};
+  --background: #{$background-dark};
+  --hover-background: #{color.scale($background-dark, $lightness: -10%)};
+  --content-background :#{$background-med-dark};
+  --button-color: #{$white};
+  --button-background: var(--cta);
+  --button-hover: #{color.scale($cta-local, $lightness: 20%)};
+  --button-active: #{color.scale($cta-local, $lightness: 10%, $saturation: 20%)};
+  --button-shadow: var(--cta-rgb);
+  --nav-border: #{colorVal("gray", 70)};
+  --logo-text: var(--background);
+  --logo-bkg-top: var(--text-color);
+  --logo-bkg-bottom: var(--text-color);
+  --border-color: #{$gray-med};
+  --footer-background: #{color.scale($background-dark, $lightness: -20%)};
+  --footer-text-color: #{$gray-med};
+
+ --color-error: #{colorVal("orange", 50)};
+ --color-warning: #{colorVal("pumpkin", 30)};
+ --color-correct: #{colorVal("sage", 20)};
+
+}
+
+@mixin reducedMotion {
+  --trns-s : #{$ts};
+  --trns-m : #{$tm};
+  --trns-l : #{$tl};
+  --trns-x : #{$tx};
+  --trns-s-1 : 1s;
+
+  --interactive-feedback: translateY(-.075em) scale(1.01);
+
+
+  @media (prefers-reduced-motion: reduce) {
+    --trns-s : 0s;
+    --trns-m : 0s;
+    --trns-l : 0s;
+    --trns-x : 0s;
+    --trns-s-1 : 0s;
+
+    --interactive-feedback: translateY(0) scale(1);
+    }
+}
+
+
+
+:root {
+  color-scheme: light dark; // both are supported
+  @include light;
+  @include reducedMotion;
+
+  @media (prefers-color-scheme: dark) {
+    @include dark;
+  }
+}
+
+.theme-dark {
+  @include dark;
+}
+
+.theme-light {
+  @include light;
+}

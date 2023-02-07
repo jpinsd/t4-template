@@ -1,0 +1,21 @@
+@use "../utilities" as *;
+
+@mixin footer {
+   footer {
+
+      background: var(--footer-background);
+      color: var(--footer-text-color);
+
+      .footerContent {
+        width: calc(100% - $padding);
+        max-width: $max-width;
+        margin: 0 auto;
+        padding-top: 2rem;
+
+        min-height: 200px;
+      }
+
+   }
+}
+
+

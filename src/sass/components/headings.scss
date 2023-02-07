@@ -1,0 +1,18 @@
+@use "../utilities" as * ;
+
+@mixin headings-base {
+  margin: 0;
+  margin-bottom: 1em;
+  color: var(--heading-color);
+  font-weight: normal;
+  font-family: $font-heading;
+}
+
+@mixin headings {
+  h1, h2, h3, h4 {
+    @include headings-base;
+  }
+
+  // h1 { font-size: 3.6rem }
+  // h2 { font-size: 3.2rem }
+}

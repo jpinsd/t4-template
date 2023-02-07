@@ -1,0 +1,47 @@
+@use "../utilities" as *;
+
+@mixin label {
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: .5em;
+}
+
+@mixin inputText {
+  appearance: none;
+  border: 2px solid var(--border-color);
+  background: var(--background);
+  margin-bottom: 0;
+  padding: .25em;
+  width: 100%;
+  transition: all $ts;
+  color: var(--text-color);
+
+  &:focus {
+    background: var(--content-background);
+    border-color: $cta;
+    outline: 2px $transparent;
+    color: var(--text-color);
+  }
+}
+
+// Override Chrome's defaults
+// most of this isn't working, because Chrome is only looking
+// at the user's light or dark preference on their device,
+// and not allowing style overrides.
+@mixin chrome-fix {
+  &:-internal-autofill-selected  {
+    --input-autofill: #{$autofill-light}; // light orange
+
+    @media (prefers-color-scheme: dark) {
+      // Chrome will always make the text white.
+      // So i'm using a dark background instead
+      .theme-dark &,
+      .theme-light & {
+         --input-autofill: #{$autofill-dark}; //charcoal gray
+      }
+    }
+
+    box-shadow: inset 0 0 0 50px var(--input-autofill);
+  }
+}
+

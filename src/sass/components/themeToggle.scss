@@ -1,0 +1,22 @@
+@mixin themeToggle {
+  .theme-toggle {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    margin-left: auto;
+
+    .colorPalettesSolo & {
+      margin-bottom: .5rem;
+      #theme-icon {
+        width: 1rem;
+      }
+    }
+  }
+
+  #theme-icon {
+    width: 2rem;
+
+  }
+}

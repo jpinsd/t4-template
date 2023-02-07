@@ -1,0 +1,16 @@
+// breakpoints
+$break-xs: 600px;
+$break-sm: 905px;
+$break-md: 1240px;
+$break-lg: 1696px;
+
+// measurements
+$padding: 2rem;
+$max-width: $break-sm;
+$breakpoint-menu: $break-sm;
+
+//animations and transitions
+$ts: .1s;
+$tm: .25s;
+$tl: .4s;
+$tx: .6s;

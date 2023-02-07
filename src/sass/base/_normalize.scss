@@ -1,0 +1,66 @@
+@use "../utilities/normalize-min.css";
+@use "../utilities/fonts";
+@use "../utilities/colors";
+@use "../utilities/variables" as *;
+
+::selection {
+  background-color: var(--cta);
+  color: colors.$white;
+}
+
+html {
+    //font-size: 62.5%; //sets rem units to base 10
+    transition: font-size $ts;
+    font-size: 16px;
+
+    @media(min-width: $break-sm) and (max-width: $break-lg) {
+      font-size: 14px;
+    }
+
+    // @media(min-width: $breakpoint-md) {
+    //   font-size: 18px;
+    // }
+
+    line-height: 1.35em;
+}
+
+body {
+    padding: 0;
+    padding:  env(safe-area-inset-top)
+              env(safe-area-inset-right)
+              env(safe-area-inset-bottom)
+              env(safe-area-inset-left);
+
+    font-family: fonts.$font-body;
+    font-size: 1.8rem;
+}
+
+
+a,
+a:visited {
+  text-decoration: none;
+  color: var(--link-color);
+  border-bottom: 1px solid var(--link-color);
+  padding-bottom: .2em;
+}
+a:hover {
+  --link-color: var(--link-active);
+}
+
+p {
+  margin-top: 0;
+  line-height: 1.35em;
+}
+
+h1, h2, h3, h4, h5 {
+  line-height: 1.35em;
+}
+
+header {
+  h2, h3, h4 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+}

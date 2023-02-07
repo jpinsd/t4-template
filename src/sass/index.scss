@@ -1,8 +1,4 @@
-html, body {
-  margin: 0;
-  padding: 0;
+@use "utilities" as *;
+@use "themes" as *;
+@use "base" as *;
 
-  main {
-    background: #aa0;
-  }
-}

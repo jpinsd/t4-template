@@ -1,0 +1,77 @@
+@use "../utilities" as *;
+@use "../components/themeToggle.scss" as toggle;
+
+@mixin hamburger-menu {
+    width: 2.5rem;
+    height: 2.5rem;
+    // margin-right: 2rem;
+    border: 2px solid var(--text-color);
+    border-left: none;
+    border-right: none;
+    position: relative;
+    transition: all $tm;
+
+    display: none;
+    @media (max-width: $breakpoint-menu) {
+      display: block
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: var(--text-color);
+      display: block;
+      position: absolute;
+      top: calc(50% - 1px);
+      transition: all $tm;
+    }
+
+    &.active {
+      border-color: $transparent;
+
+      &::before {
+        transform: rotate(45deg);
+      }
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+}
+
+
+@mixin main-nav {
+  #nav {
+    border-bottom: 1px solid var(--nav-border);
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    z-index: 10;
+    // box-shadow: 0 3px 12px rgba($black, .1);
+
+    .navWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      padding-top: 1rem;
+
+      width: calc(100% - $padding);
+      max-width: $breakpoint-menu;
+      margin: 0 auto;
+    }
+
+    .home {
+      border: none;
+    }
+  }
+
+  @include toggle.themeToggle;
+
+  #hamburger-menu {
+    @include hamburger-menu;
+  }
+}
