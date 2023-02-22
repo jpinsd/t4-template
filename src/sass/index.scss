@@ -2,3 +2,11 @@
 @use "themes" as *;
 @use "base" as *;
 
+main {
+  width: calc(100% - 4rem);
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: $break-sm;
+
+  background: var(--content-background);
+}
