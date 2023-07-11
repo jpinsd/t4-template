@@ -4,6 +4,8 @@
 	"description": "Template for setting up a quick Sass compilier to test ideas",
 	"main": "index.html",
 	"scripts": {
+		"prebuild": "del-cli ./public",
+		"prestart": "del-cli ./public",
 		"build:sass": "sass  --no-source-map src/sass:public/css",
 		"copy:html": "copyfiles -u 1 ./src/*.html public",
 		"copy:img": "copyfiles -u 1 ./src/img/* public",
@@ -16,7 +18,6 @@
 		"serve": "browser-sync start --server public --files public --no-ghost-mode --no-open",
 		"start": "npm-run-all copy --parallel watch serve",
 		"build": "npm-run-all copy build:*",
-		"prebuild": "del-cli ./public",
 		"postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r --no-map",
 		"poststart": "postcss public/css/*.css -u autoprefixer"
 	},
