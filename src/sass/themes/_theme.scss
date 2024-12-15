@@ -3,64 +3,36 @@
 @use "../utilities/variables" as *;
 @use "sass:color";
 
+:root {
+  --padding: 2rem;
+}
+
 @mixin light {
-  $cta-local: $blue;
-  --cta: #{$cta-local};
-  --cta-rgb: #{toRGB($cta-local)};
-  --text-color: #{$text};
-  --link-color: #{$cta-local};
-  --link-active: #{$slate};
-  --heading-color: #{$black};
-  --background: #{$background-light};
-  --hover-background: #{color.scale($background-light, $lightness: -4%)};
-  --content-background :#{$white};
-  --button-color: #{$black};
-  --button-background: var(--cta);
-  --button-hover: #{color.scale($cta-local, $lightness: 20%)};
-  --button-active: #{color.scale($cta-local, $lightness: 10%, $saturation: 20%)};
-  --button-shadow: var(--cta-rgb);
-  --nav-border: #{colorVal("gray", 20)};
-  --logo-text: var(--background);
-  --logo-bkg-top: var(--text-color);
-  --logo-bkg-bottom: var(--text-color);
-  --border-color: #{$gray-med-light};
-  --footer-background: #{$gray-med-dark};
-  --footer-text-color: #{$gray-med-light};
+  --text: #{$gray-dark};
+  --cta: #{$primary};
+  --cta-rgb: #{toRGB($primary)};
+  --app: #{$white};
+  --on-app: var(--text);
+  --text-inverse: #{$white};
+  --link-color: var(--text);
+  --link-active: var(--cta);
+  --link-underline: var(--cta);
 
-  --color-error: #{colorVal("terracotta", 50)};
-  --color-warning: #{colorVal("pumpkin", 40)};
-  --color-correct: #{colorVal("sage", 60)};
-
+  --button-border: transparent;
 }
 
 @mixin dark {
-  $cta-local: $orange;
-  --cta: #{$cta-local};
-  --cta-rgb: #{toRGB($cta-local)};
-  --text-color: #{$text-light};
-  --link-color: #{$cta-local};
-  --link-active: #{$sst-orange-30};
-  --heading-color: #{$white};
-  --background: #{$background-dark};
-  --hover-background: #{color.scale($background-dark, $lightness: -10%)};
-  --content-background :#{$background-med-dark};
-  --button-color: #{$white};
-  --button-background: var(--cta);
-  --button-hover: #{color.scale($cta-local, $lightness: 20%)};
-  --button-active: #{color.scale($cta-local, $lightness: 10%, $saturation: 20%)};
-  --button-shadow: var(--cta-rgb);
-  --nav-border: #{colorVal("gray", 70)};
-  --logo-text: var(--background);
-  --logo-bkg-top: var(--text-color);
-  --logo-bkg-bottom: var(--text-color);
-  --border-color: #{$gray-med};
-  --footer-background: #{color.scale($background-dark, $lightness: -20%)};
-  --footer-text-color: #{$gray-med};
+  --text: #{$gray-light};
+  --cta: #{$primary};
+  --cta-rgb: #{toRGB($primary)};
+  --app: #{$gray-dark};
+  --on-app: var(--text);
+  --text-inverse: #{$white};
+  --link-color: var(--text);
+  --link-active: var(--cta);
+  --link-underline: var(--cta);
 
- --color-error: #{colorVal("orange", 50)};
- --color-warning: #{colorVal("pumpkin", 30)};
- --color-correct: #{colorVal("sage", 20)};
-
+  --button-border: transparent;
 }
 
 @mixin reducedMotion {

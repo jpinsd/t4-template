@@ -1,0 +1,34 @@
+@use "../utilities" as * ;
+
+@mixin button-base {
+  --border: var(--button-border);
+  --bkg: var(--cta);
+  --text: var(--text-inverse);
+
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: .35em;
+  background: var(--bkg);
+
+  box-shadow: 0 .35em .5em rgba(var(--cta-rgb), .6);
+  transition: all var(--trns-s);
+
+}
+
+@mixin button {
+  button{
+    @include button-base;
+
+    &:hover {
+      filter: saturate(120%) brightness(1.1);
+      box-shadow: 0 .25em .25em rgba(var(--cta-rgb), .3);
+    }
+    &:active {
+      filter: saturate(80%) brightness(1);
+      box-shadow: 0 0 .25em rgba(var(--cta-rgb), .6);
+    }
+
+  }
+
+
+}

@@ -65,7 +65,7 @@
   background-color: $color;
 }
 
-
+// for creating my own column-based layout with grid.
 @mixin gridSpans($className, $num) {
   @for $i from 1 through $num {
     #{"." + $className + "-" + $i} {
