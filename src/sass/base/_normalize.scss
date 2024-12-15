@@ -2,6 +2,7 @@
 @use "../utilities/fonts";
 @use "../utilities/colors";
 @use "../utilities/variables" as *;
+@use "../components" as component;
 
 ::selection {
   background-color: var(--cta);
@@ -9,42 +10,40 @@
 }
 
 html {
-    //font-size: 62.5%; //sets rem units to base 10
-    transition: font-size $ts;
-    font-size: 16px;
-
-    @media(min-width: $break-sm) and (max-width: $break-lg) {
-      font-size: 14px;
-    }
-
-    // @media(min-width: $breakpoint-md) {
-    //   font-size: 18px;
-    // }
-
     line-height: 1.35em;
 }
 
 body {
-    padding: 0;
-    padding:  env(safe-area-inset-top)
-              env(safe-area-inset-right)
-              env(safe-area-inset-bottom)
-              env(safe-area-inset-left);
+  padding: 0;
+  padding:  env(safe-area-inset-top)
+            env(safe-area-inset-right)
+            env(safe-area-inset-bottom)
+            env(safe-area-inset-left);
 
-    font-family: fonts.$font-body;
-    font-size: 1.8rem;
+
+  background: var(--app);
+  color: var(--on-app);
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: fonts.$font-body;
 }
 
+
+main {
+  width: min(100vw - (var(--padding) * 2), $max-width)
+  margin: 0 auto;
+  // min-height: calc(100vh - 201px - 6rem);
+}
 
 a,
 a:visited {
-  text-decoration: none;
   color: var(--link-color);
-  border-bottom: 1px solid var(--link-color);
-  padding-bottom: .2em;
+  text-decoration: underline;
+  text-underline-offset: .125em;
+  text-decoration-color: var(--cta);
 }
 a:hover {
-  --link-color: var(--link-active);
+  color: var(--link-active);
 }
 
 p {
@@ -52,15 +51,15 @@ p {
   line-height: 1.35em;
 }
 
-h1, h2, h3, h4, h5 {
-  line-height: 1.35em;
-}
+@include component.headings;
+
 
 header {
-  h2, h3, h4 {
-    margin: 0;
-  }
-  p {
-    margin: 0;
-  }
+  display: flex;
+  flex-direction: row;
+  // flex-wrap: wrap;
+  // gap: 4rem;
+  // justify-content: flex-start;
+  // align-items: baseline;
 }
+

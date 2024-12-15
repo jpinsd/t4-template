@@ -6,13 +6,16 @@
   color: var(--heading-color);
   font-weight: normal;
   font-family: $font-heading;
+  line-height: 1.35em;
 }
 
 @mixin headings {
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5 {
     @include headings-base;
   }
 
-  // h1 { font-size: 3.6rem }
-  // h2 { font-size: 3.2rem }
+  h1 { font-size: 1.5rem }
+  h2 { font-size: 1.25rem }
+  h3 { font-size: 1rem }
+  h4 { font-size: 1rem }
 }
