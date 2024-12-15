@@ -1,12 +1,11 @@
 @use "../utilities/normalize-min.css";
-@use "../utilities/fonts";
-@use "../utilities/colors";
+@use "../utilities/fonts" as fonts;
 @use "../utilities/variables" as *;
 @use "../components" as component;
 
 ::selection {
   background-color: var(--cta);
-  color: colors.$white;
+  color: var(--text-inverse);
 }
 
 html {
@@ -30,16 +29,17 @@ body {
 
 
 main {
-  width: min(100vw - (var(--padding) * 2), $max-width)
+  width: min(100vw - (var(--padding) * 2), $max-width);
   margin: 0 auto;
   // min-height: calc(100vh - 201px - 6rem);
+  background: var(--app);
 }
 
 a,
 a:visited {
   color: var(--link-color);
   text-decoration: underline;
-  text-underline-offset: .125em;
+  text-underline-offset: .25em;
   text-decoration-color: var(--cta);
 }
 a:hover {
@@ -52,6 +52,8 @@ p {
 }
 
 @include component.headings;
+
+@include component.button;
 
 
 header {

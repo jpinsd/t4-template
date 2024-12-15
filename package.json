@@ -33,7 +33,7 @@
 	"homepage": "https://github.com/jpinsd/t4-template#readme",
 	"dependencies": {
 		"autoprefixer": "^10.4.13",
-		"browser-sync": "^2.27.11",
+		"browser-sync": "^3.0.3",
 		"copyfiles": "^2.4.1",
 		"cssnano": "^5.1.14",
 		"del-cli": "^5.0.0",

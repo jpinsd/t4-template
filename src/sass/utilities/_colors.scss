@@ -15,9 +15,6 @@ $tertiary: #4b3e56;
 
 
 
-
-
-
 @function toRGB($color) {
   @return color.red($color) + ", " + color.green($color) + ", " + color.blue($color);
 }

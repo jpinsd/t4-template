@@ -3,26 +3,36 @@
 @use "../utilities/variables" as *;
 @use "sass:color";
 
+:root {
+  --padding: 2rem;
+}
+
 @mixin light {
   --text: #{$gray-dark};
   --cta: #{$primary};
+  --cta-rgb: #{toRGB($primary)};
   --app: #{$white};
   --on-app: var(--text);
   --text-inverse: #{$white};
   --link-color: var(--text);
   --link-active: var(--cta);
   --link-underline: var(--cta);
+
+  --button-border: transparent;
 }
 
 @mixin dark {
   --text: #{$gray-light};
   --cta: #{$primary};
+  --cta-rgb: #{toRGB($primary)};
   --app: #{$gray-dark};
   --on-app: var(--text);
   --text-inverse: #{$white};
   --link-color: var(--text);
   --link-active: var(--cta);
   --link-underline: var(--cta);
+
+  --button-border: transparent;
 }
 
 @mixin reducedMotion {
